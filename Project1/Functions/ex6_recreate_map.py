@@ -131,12 +131,12 @@ elif method == 'Lasso':
 
      image_approx = np.zeros(terrain_var.shape) #Empty array for terrain data
 
-    #Row by row
+    #Try to recreate the rows in the map
      for y_index in range(terrain_var.shape[0]): 
          print(y_index) #keeps track of how close it is to finishing
          X_temp = design_matrix(degree, np.arange(terrain_var.shape[1]), y_index*np.ones(terrain_var.shape[1])) 
-         X_temp = scale(X_train, X_temp)[1] #Scale the design matrix
-         image_approx[y_index] = X_temp @ beta #Recreate map for each row
+         X_temp = scale(X_train, X_temp)[1]
+         image_approx[y_index] = X_temp @ beta
          del X_temp 
 
      #Approximated map
