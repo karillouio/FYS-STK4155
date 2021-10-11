@@ -2,7 +2,7 @@ from functions import *
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 3 #Number of bootstraps
+n = 20 #Number of bootstraps
 max_degree = 12 #Run for all polynomial degrees up to this
 N = 200 #Number of data points
 noise = 1 #Factor of noise in data
@@ -30,8 +30,8 @@ degree_array = np.arange(1, max_degree + 1)
 plt.plot(degree_array, bias_a, "--",label = "Bias")
 plt.plot(degree_array, var_a, "--",label = "Variance")
 plt.plot(degree_array, MSE_a, label = "MSE")
-plt.xlabel("Degree of Polynomial", fontsize="large")
-plt.ylabel("Error score (MSE/bias/variance)", fontsize="large")
+plt.xlabel("Degree of polynomial", fontsize="large")
+plt.ylabel("Error score", fontsize="large")
 plt.title("Bias-variance tradeoff. N = %i, noise = %.2f, %i bootstraps"%(N, noise, n), fontsize="x-large")
 plt.grid()
 plt.legend()
