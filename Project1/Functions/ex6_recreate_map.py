@@ -63,7 +63,8 @@ if method == 'OLS':
     plt.imshow(terrain_var, cmap='gray')
     plt.xlabel("<- West - East ->", fontsize="large")
     plt.ylabel("<- South - North ->", fontsize="large")
-    plt.xticks([]);plt.yticks([])
+    plt.xticks([])
+    plt.yticks([])
     plt.show()
 
 elif method == 'Ridge':
@@ -91,7 +92,7 @@ elif method == 'Ridge':
 
 #Approximated map
     plt.figure() 
-    plt.title("Approximate map using Ridge \nPolynomial Degree: %i , MSE value: %e" % (degree, MSE_test), fontsize="x-large")
+    plt.title("Approximate map using Ridge \nPolynomial degree: %i , MSE value: %e" % (degree, MSE_test), fontsize="x-large")
     plt.imshow(image_approx, cmap='gray')
     plt.xlabel("<- West - East ->",fontsize="large")
     plt.ylabel("<- South - North ->",fontsize="large")
@@ -140,7 +141,7 @@ elif method == 'Lasso':
 
      #Approximated map
      plt.figure()
-     plt.title("Approximate map using Lasso \nPolynomial Degree: %i , MSE value: %e" % (degree, MSE_test),fontsize="x-large")
+     plt.title("Approximate map using Lasso \nPolynomial degree: %i , MSE value: %e" % (degree, MSE_test),fontsize="x-large")
      plt.imshow(image_approx, cmap='gray')
      plt.xlabel("<- West - East ->",fontsize="large")
      plt.ylabel("<- South - North ->",fontsize="large")
