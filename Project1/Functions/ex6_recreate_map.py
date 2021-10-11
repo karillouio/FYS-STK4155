@@ -37,7 +37,7 @@ if method == 'OLS':
     MSE_train = MSE(z_train, z_tilde_train)
     MSE_test = MSE(z_test, z_tilde_test)
 
-    image_approx = np.zeros(terrain_var.shape)
+    image_approx = np.zeros(terrain_var.shape) #Empty array for terrain data
 
     #Try to recreate the rows of the map
     for y_index in range(terrain_var.shape[0]): 
@@ -47,8 +47,8 @@ if method == 'OLS':
         image_approx[y_index] = X_temp @ beta 
         del X_temp 
 
-    #Recreated map
-    plt.figure() #Plot our attempt at recreated map
+    #Approximated map
+    plt.figure() 
     plt.title("Approximate map\nPolynomial degree: %i , MSE value: %e"%(degree, MSE_test), fontsize="x-large")
     plt.imshow(image_approx, cmap='gray')
     plt.xlabel("<- West - East ->", fontsize="large")
@@ -57,7 +57,7 @@ if method == 'OLS':
     plt.yticks([])
 
 
-    #Plot the actual map
+    #Original map
     plt.figure() 
     plt.title("Actual map", fontsize="x-large")
     plt.imshow(terrain_var, cmap='gray')
@@ -79,7 +79,7 @@ elif method == 'Ridge':
     MSE_train = MSE(z_train, z_tilde_train)
     MSE_test = MSE(z_test, z_tilde_test)
 
-    image_approx = np.zeros(terrain_var.shape)
+    image_approx = np.zeros(terrain_var.shape) #Empty array for terrain data
 
     #Try to recreate the rows in the map
     for y_index in range(terrain_var.shape[0]): 
@@ -89,7 +89,7 @@ elif method == 'Ridge':
         print(y_index) 
         del X_temp 
 
-#Plot the approximated map
+#Approximated map
     plt.figure() 
     plt.title("Approximate map using Ridge \nPolynomial Degree: %i , MSE value: %e" % (degree, MSE_test), fontsize="x-large")
     plt.imshow(image_approx, cmap='gray')
@@ -98,7 +98,7 @@ elif method == 'Ridge':
     plt.xticks([])
     plt.yticks([])
 
-#Plot the original map
+#Original map
     plt.figure() 
     plt.title("Actual map",fontsize="x-large")
     plt.imshow(terrain_var, cmap='gray')
@@ -128,7 +128,7 @@ elif method == 'Lasso':
      MSE_test = np.min(MSE_temp_array) #Find the lowest MSE
      beta = beta_temp_array[np.argmin(MSE_test)] #Optimal beta
 
-     image_approx = np.zeros(terrain_var.shape) #Create empty shell for recreating map
+     image_approx = np.zeros(terrain_var.shape) #Empty array for terrain data
 
     #Row by row
      for y_index in range(terrain_var.shape[0]): 
