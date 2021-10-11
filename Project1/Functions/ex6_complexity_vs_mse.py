@@ -14,12 +14,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils import resample
 import sklearn.linear_model as skl
 
-terrainvar = imread('SRTM_data_Norway_1.tif') #Read image file
+terrain_var = imread('SRTM_data_Norway_1.tif') #Read image file
 
 N = 1000 #Number of random points to extract
-x = np.random.randint(0,terrainvar.shape[1],size=N) #Create random indexes (corresponding to coordinates)
-y = np.random.randint(0,terrainvar.shape[0],size=N)
-z = terrainvar[y,x] #Extract corresponding value of map to the random indexes above
+x = np.random.randint(0, terrain_var.shape[1], size=N) #Random coordinates
+y = np.random.randint(0, terrain_var.shape[0], size=N)
+z = terrain_var[y,x] #Extract corresponding value of map to the random indexes above
 
 max_degree = 20 #Max polynomial size of runs
 testsize = 0.2 #Test size to be used

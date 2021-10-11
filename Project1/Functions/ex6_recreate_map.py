@@ -14,12 +14,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils import resample
 import sklearn.linear_model as skl
 
-terrainvar = imread('SRTM_data_Norway_1.tif') #Read initial map
+terrain_var = imread('SRTM_data_Norway_1.tif') #Read initial map
 
 N = 10000 #Number of data points
-x = np.random.randint(0,terrainvar.shape[1], size=N) #Create random coordinates
-y = np.random.randint(0,terrainvar.shape[0], size=N)
-TrainingData = terrainvar[y,x] #Extract terrain value corresponding to random position
+x = np.random.randint(0, terrain_var.shape[1], size=N)
+y = np.random.randint(0, terrain_var.shape[0], size=N)
+TrainingData = terrain_var[y,x] #Terrain value in a random position
 
 #Options: 'OLS', 'Ridge', 'Lasso'
 method = 'Ridge'
@@ -37,11 +37,11 @@ if method == 'OLS':
     MSE_train = MSE(z_train, z_tilde_train)
     MSE_test = MSE(z_test, z_tilde_test)
 
-    image_approx = np.zeros(terrainvar.shape)
+    image_approx = np.zeros(terrain_var.shape)
 
     #Try to recreate the rows of the map
-    for y_index in range(terrainvar.shape[0]): 
-        X_temp = design_matrix(degree, np.arange(terrainvar.shape[1]), y_index*np.ones(terrainvar.shape[1])) 
+    for y_index in range(terrain_var.shape[0]): 
+        X_temp = design_matrix(degree, np.arange(terrain_var.shape[1]), y_index*np.ones(terrain_var.shape[1])) 
         X_temp = scale(X_train, X_temp)[1]
         print(y_index) 
         image_approx[y_index] = X_temp @ beta 
@@ -60,7 +60,7 @@ if method == 'OLS':
     #Plot the actual map
     plt.figure() 
     plt.title("Actual map", fontsize="x-large")
-    plt.imshow(terrainvar, cmap='gray')
+    plt.imshow(terrain_var, cmap='gray')
     plt.xlabel("<- West - East ->", fontsize="large")
     plt.ylabel("<- South - North ->", fontsize="large")
     plt.xticks([]);plt.yticks([])
@@ -79,11 +79,11 @@ elif method == 'Ridge':
     MSE_train = MSE(z_train, z_tilde_train)
     MSE_test = MSE(z_test, z_tilde_test)
 
-    image_approx = np.zeros(terrainvar.shape)
+    image_approx = np.zeros(terrain_var.shape)
 
     #Try to recreate the rows in the map
-    for y_index in range(terrainvar.shape[0]): 
-        X_temp = design_matrix(degree, np.arange(terrainvar.shape[1]), y_index*np.ones(terrainvar.shape[1])) 
+    for y_index in range(terrain_var.shape[0]): 
+        X_temp = design_matrix(degree, np.arange(terrain_var.shape[1]), y_index*np.ones(terrain_var.shape[1])) 
         X_temp = scale(X_train, X_temp)[1] 
         image_approx[y_index] = X_temp @ beta 
         print(y_index) 
@@ -101,7 +101,7 @@ elif method == 'Ridge':
 #Plot the original map
     plt.figure() 
     plt.title("Actual map",fontsize="x-large")
-    plt.imshow(terrainvar, cmap='gray')
+    plt.imshow(terrain_var, cmap='gray')
     plt.xlabel("<- West - East ->",fontsize="large")
     plt.ylabel("<- South - North -->",fontsize="large")
     plt.xticks([])
@@ -128,11 +128,11 @@ elif method == 'Lasso':
      MSE_test = np.min(MSE_temp_array) #Find the lowest MSE
      beta = beta_temp_array[np.argmin(MSE_test)] #Optimal beta
 
-     image_approx = np.zeros(terrainvar.shape) #Create empty shell for recreating map
+     image_approx = np.zeros(terrain_var.shape) #Create empty shell for recreating map
 
     #Row by row
-     for y_index in range(terrainvar.shape[0]): 
-         X_temp = design_matrix(degree, np.arange(terrainvar.shape[1]), y_index*np.ones(terrainvar.shape[1])) 
+     for y_index in range(terrain_var.shape[0]): 
+         X_temp = design_matrix(degree, np.arange(terrain_var.shape[1]), y_index*np.ones(terrain_var.shape[1])) 
          X_temp = scale(X_train, X_temp)[1] #Scale the design matrix
          image_approx[y_index] = X_temp @ beta #Recreate map for each row
          print(y_index)
@@ -149,8 +149,8 @@ elif method == 'Lasso':
 
      #Original map
      plt.figure() #Plot the actual map
-     plt.title("Actual map",fontsize="x-large")
-     plt.imshow(terrainvar,cmap='gray')
+     plt.title("Actual map", fontsize="x-large")
+     plt.imshow(terrain_var, cmap='gray')
      plt.xlabel("<- West - East ->",fontsize="large")
      plt.ylabel("<- South - North ->",fontsize="large")
      plt.xticks([])
