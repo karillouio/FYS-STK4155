@@ -1,0 +1,19 @@
+List of files:
+
+functions: Miscellaneous functions. Note that the other code depends on this file being in the same folder.
+
+SGD: A test of my SGD function comparing it to the built-in SKLearn one to confirm that it works well.
+SGD_OLS: A comparison between SGD (OLS variation) and OLS methods.
+SGD_Ridge: A program to examine how the choice of the hyperparameter and learning rate affects the Ridge variation of SGD.
+SGD_Ridge_compare: A comparison between SGD (Ridge variation) and OLS methods.
+
+NeuralNetwork: A file containing a class for neural networks. Note that some files depend on it being in the same folder.
+
+Franke_NN_layer: An experiment with a neural network on the number of hidden layers.
+Franke_NN_neurons: An experiment with a neural network on the number of hidden neurons.
+
+LogisticRegression: Using logistic regression on the breast cancer data.
+Classification: An attempt to solve the breast cancer classification problem using neural networks.
+
+
+
