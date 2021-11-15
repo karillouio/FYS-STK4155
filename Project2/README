@@ -1,4 +1,6 @@
-List of files:
+This repository contains the report, a folder with the figures included in the report, and a folder with code.
+
+List of code files:
 
 functions: Miscellaneous functions. Note that the other code depends on this file being in the same folder.
 
