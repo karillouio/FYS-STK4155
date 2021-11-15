@@ -13,6 +13,7 @@ NeuralNetwork: A file containing a class for neural networks. Note that some fil
 
 Franke_NN_layer: An experiment with a neural network on the number of hidden layers.
 Franke_NN_neurons: An experiment with a neural network on the number of hidden neurons.
+Franke_NN_epochs: An experiment with a neural network on the number of epochs.
 
 LogisticRegression: Using logistic regression on the breast cancer data.
 Classification: An attempt to solve the breast cancer classification problem using neural networks.
