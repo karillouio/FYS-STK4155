@@ -2,7 +2,7 @@ from sklearn.model_selection import train_test_split
 from functions import *
 import matplotlib.pyplot as plt
 from NeuralNetwork import FFNeuralNetwork
-np.random.seed(5513)
+np.random.seed(272)
 
 N = 100
 
@@ -27,7 +27,7 @@ X = D2_desmat(x,y)
 # Choosing hyperparameters
 neuron_test_number = 8
 hidden_neurons = np.linspace(25, 200, neuron_test_number)
-hidden_layers = 2
+hidden_layers = 3
 epochs = 10000
 batch_size = 10
 confusion_matrix = np.zeros([5,11])
@@ -48,7 +48,7 @@ for i in range(neuron_test_number):
         print(MSE(z_test, z_pred))
         MSE_[i] = MSE(z_test, z_pred)
 
-FFNN = FFNeuralNetwork(X_train, z_train, hidden_neurons=25, hidden_layers=2, epochs=1000, batch_size=25, gamma=0.001, lmbd=0.1, out_func='Leaky_RELU', n_outputs=1)
+FFNN = FFNeuralNetwork(X_train, z_train, hidden_neurons=100, hidden_layers=3, epochs=1000, batch_size=25, gamma=0.001, lmbd=0.1, out_func='Leaky_RELU', n_outputs=1)
 z_prev = FFNN.predict(X_train[:2])
 FFNN.train()
 z_pred = FFNN.predict(X_train[:2])

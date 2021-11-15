@@ -25,9 +25,10 @@ def D2_desmat(x, y):
 X = D2_desmat(x,y)
 
 # Choosing hyperparameters
-hidden_neurons = 125
-hidden_layers = 4
-epochs = 10000
+epoch_test_number = 6
+hidden_neurons = 100
+hidden_layers = 3
+epochs = np.linspace(2000, 12000, epoch_test_number)
 batch_size = 10
 confusion_matrix = np.zeros([5,11])
 gamma = 0.01
@@ -35,11 +36,11 @@ lambda_val = 0
 
 X_train, X_test, z_train, z_test = train_test_split(X, z, train_size=0.8)
 
-MSE_ = np.zeros(hidden_layers)
+MSE_ = np.zeros(epoch_test_number)
 
-for i in range(hidden_layers):
+for i in range(epoch_test_number):
     for j in range(1):
-        FFNN = FFNeuralNetwork(X_train, z_train, hidden_neurons, hidden_layers, epochs, batch_size, gamma, lambda_val, out_func='Sigmoid', n_outputs=1)
+        FFNN = FFNeuralNetwork(X_train, z_train, hidden_neurons, hidden_layers, epochs[i], batch_size, gamma, lambda_val, out_func='Sigmoid', n_outputs=1)
         FFNN.train() # training the network
         z_pred = FFNN.predict(X_test) # predicting the test data
         z_predict = FFNN.predict(X_train[:2])
@@ -47,7 +48,7 @@ for i in range(hidden_layers):
         print(MSE(z_test, z_pred))
         MSE_[i] = MSE(z_test, z_pred)
 
-FFNN = FFNeuralNetwork(X_train, z_train, hidden_neurons=125, hidden_layers=2, epochs=1000, batch_size=25, gamma=0.001, lmbd=0.1, out_func='Leaky_RELU', n_outputs=1)
+FFNN = FFNeuralNetwork(X_train, z_train, hidden_neurons=100, hidden_layers=3, epochs=1000, batch_size=25, gamma=0.001, lmbd=0.1, out_func='Leaky_RELU', n_outputs=1)
 z_prev = FFNN.predict(X_train[:2])
 FFNN.train()
 z_pred = FFNN.predict(X_train[:2])
@@ -61,8 +62,8 @@ z_pred = FFNN.predict(X_train[:2])
 #print(MSE_)
 #print(hidden_layers)
 
-plt.plot(range(hidden_layers)+1*np.ones(hidden_layers), MSE_, 'r-')
-plt.title('MSE vs. number of hidden layers', fontsize='x-large')
+plt.plot(epochs, MSE_, 'r-')
+plt.title('MSE vs. number of epochs', fontsize='x-large')
 plt.ylabel('MSE', fontsize='large')
-plt.xlabel('Hidden layers', fontsize='large')
+plt.xlabel('Hidden neurons', fontsize='large')
 plt.show()
