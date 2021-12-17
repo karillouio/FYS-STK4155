@@ -14,4 +14,4 @@ Script files:
 
 Other: 
 * report_extra.pdf: The report from this optional part of the project.
-* plots" folder: The plots that were used in the report.
+* "plots" folder: The plots that were used in the report.
