@@ -5,7 +5,7 @@ List of files:
 * PDE_solver.py: A script that creates and trains a neural network to solve a PDE, specifially the heat equation.
 * Eigenvalue_solver.py: An attempt to use a similar method as PDE_solver to find eigenvalues.
 
-explicit_euler.py: Applies the Explicit scheme / forward Euler method to solve the heat equation. Used to compare to the Neural Network case.
+* report.pdf: The report.
 
 List of folders:
 * "Extra": The optional extra exercise was given its own folder, which contains its own README for details.
