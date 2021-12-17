@@ -55,7 +55,7 @@ plt.xlabel("Position (x) [Relative units]",fontsize='x-large')
 plt.ylabel("u(x,t) at fixed times (t)",fontsize='x-large')
 plt.title("Initial, middle and final state for simulation of length $t = %.2f$\n $\Delta x = \\frac{1}{%i}$" % (sim_length, delta_x**(-1)),fontsize='x-large')
 
-plt.figure() #Contour plot for all points (x,t)
+plt.figure() #Plot for all points (x,t)
 plt.contourf(x_points,t_steps,frames,levels=50,cmap='inferno')
 plt.xlabel("Position (x) [Relative units]",fontsize='x-large')
 plt.ylabel("Time (t) [Relative units]",fontsize='x-large')
