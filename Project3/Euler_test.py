@@ -48,7 +48,7 @@ true_val = np.sin(np.pi*points_x)*np.exp(-np.pi**2*points_t)
 
 plt.figure() #Plot u(x,t) at different times t
 plt.plot(x_points, frames[0], label="Initial")
-plt.plot(x_points, frames[500], label="Middle")
+plt.plot(x_points, frames[2500], label="Middle")
 plt.plot(x_points, frames[-1], label="Final")
 plt.legend(fontsize='x-large')
 plt.xlabel("Position (x) [Relative units]",fontsize='x-large')
@@ -68,5 +68,6 @@ plt.xlabel("Position (x) [Relative units]", fontsize='x-large')
 plt.ylabel("Time (t) [Relative units]", fontsize='x-large')
 plt.title("Absolute difference between analytic and numerical solution\n$\Delta x = \\frac{1}{%i}$" % (delta_x**(-1)), fontsize='x-large')
 plt.colorbar().set_label("Absolute difference", fontsize='x-large')
+
 
 plt.show()
